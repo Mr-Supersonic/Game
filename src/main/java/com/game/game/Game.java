@@ -1,0 +1,53 @@
+package com.game.game;
+
+import com.game.game.engine.Engine;
+import com.game.game.engine.Logic;
+import com.game.game.engine.Window;
+import com.game.game.engine.graph.Mesh;
+import com.game.game.engine.graph.Render;
+import com.game.game.engine.scene.Scene;
+
+public class Game implements Logic {
+
+    public static void main(String[] args) {
+        Game main = new Game();
+        Engine gameEng = new Engine("chapter-04", new Window.WindowOptions(), main);
+        gameEng.start();
+    }
+
+    @Override
+    public void cleanup() {
+        // Nothing to be done yet
+    }
+
+    @Override
+    public void init(Window window, Scene scene, Render render) {
+        float[] positions = new float[]{
+                -0.5f, 0.5f, 0.0f,
+                -0.5f, -0.5f, 0.0f,
+                0.5f, -0.5f, 0.0f,
+                0.5f, 0.5f, 0.0f,
+        };
+        float[] colors = new float[]{
+                0.5f, 0.0f, 0.0f,
+                0.0f, 0.5f, 0.0f,
+                0.0f, 0.0f, 0.5f,
+                0.0f, 0.5f, 0.5f,
+        };
+        int[] indices = new int[]{
+                0, 1, 3, 3, 1, 2,
+        };
+        Mesh mesh = new Mesh(positions, colors, indices);
+        scene.addMesh("quad", mesh);
+    }
+
+    @Override
+    public void input(Window window, Scene scene, long diffTimeMillis) {
+        // Nothing to be done yet
+    }
+
+    @Override
+    public void update(Window window, Scene scene, long diffTimeMillis) {
+        // Nothing to be done yet
+    }
+}
